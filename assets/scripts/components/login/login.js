@@ -55,9 +55,9 @@ cc.Class({
             case cc.vv.GLGameDefine.MessageType.loginloginsuc:
             {
                 console.log("msgtype:loginloginsuc:"+msgtype+","+"parm:"+JSON.stringify(parm));
-                cc.vv.peralert.show("提示", "msgtype",function () {
-                            cc.vv.GlobalMsg.RemoveObserver(this);
-                        },true);
+                //cc.vv.peralert.show("提示", "msgtype",function () {
+                            //cc.vv.GlobalMsg.RemoveObserver(this);
+                        //},true);
                 
             }
             break;
