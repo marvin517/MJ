@@ -142,7 +142,7 @@ var GLGameDefine = cc.Class({
         {
             login_Guestlogin:               "guestlogin",       //游客登陆
             login_wxlogin:                  "wxlogin",          //微信登陆
-            
+
             hall_showshop:                  "showshop",         //显示商城消息
             hall_showinvate:                "showinvate",       //显示邀请界面
             hall_showhistory:               "showhistory",      //显示历史界面
@@ -151,16 +151,15 @@ var GLGameDefine = cc.Class({
             hall_showteahouse:              "showteahouse",     //显示茶馆
             hall_showluckwheel:             "showluckwheel",    //显示大转盘
             hall_showmail:                  "showmail",         //显示消息
-
-
-
+            hall_showJoin:                  "showJoin",         //显示加入房间
+            hall_showhelp:                  "showhelp",         //显示帮助
+            hall_showpayroot:               "showpayroot",      //显示支付根节点
+            hall_showshare:                 "showshare",        //分享节点
             //game
             game_showchat:                  "showchat",         //显示聊天界面
             game_showChatHistory:           "ChatHistory",      //
             game_changeDesk:                "btn_changeDesk",   //换桌布消息
             game_showgps:                   "showgps",          //换桌布消息
-
-
 
         },
         //游戏路由

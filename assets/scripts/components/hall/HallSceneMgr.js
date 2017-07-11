@@ -6,8 +6,15 @@ cc.Class({
         _MsgFun:null,
 
         ///////////////////////////////////////////////////////////////
-        shopnode: cc.Node,
+        shopnode:cc.Node,
         joinNode:cc.Node,
+        settingsNode:cc.Node,
+        helpNode:cc.Node,
+        historyNode:cc.Node,
+        inviteCodeNode:cc.Node,
+        payrootNode:cc.Node,
+        DelegetNode:cc.Node,
+        showshareNode:cc.Node,
     },
 
     // use this for initialization
@@ -53,42 +60,83 @@ cc.Class({
             break;
             case cc.vv.GLGameDefine.BTNMsgType.hall_showinvate:
             {
-                this.AddChildOn("prefabs/inviteCode");
+                if(this.inviteCodeNode)
+                {
+                    this.inviteCodeNode.active = true;
+                }
+            }
+            break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showJoin:
+            {
+                if(this.joinNode)
+                {
+                    this.joinNode.active = true;
+                }
+            }
+            break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showhelp:
+            {
+                if(this.helpNode)
+                {
+                    this.helpNode.active = true;
+                }
             }
             break;
             case cc.vv.GLGameDefine.BTNMsgType.hall_showDeleget:
             {
-                this.AddChildOn("prefabs/ApplyAgent");
+                if(this.DelegetNode)
+                {
+                    this.DelegetNode.active = true;
+                }
             }
             break;
             case cc.vv.GLGameDefine.BTNMsgType.hall_showhistory: {
-                const ui_root = cc.find("Canvas");
-                const historyNode = cc.vv.nodePoolMgr.getNode("prefabs/history", "prefabs/history", (obj) => {
-                    if (ui_root) {
-                        ui_root.addChild(obj);
-                        obj.active = true;
-                    }
-                });
-                if (historyNode) {
-                    ui_root.addChild(historyNode);
-                    historyNode.active = true;
+                if(this.historyNode)
+                {
+                    this.historyNode.active = true;
                 }
             }
             break;
             case cc.vv.GLGameDefine.BTNMsgType.hall_showsetting: {
-                const ui_root = cc.find("Canvas");
-                const settingsNode = cc.vv.nodePoolMgr.getNode("prefabs/settings", "prefabs/settings", (obj) => {
-                    if (ui_root) {
-                        ui_root.addChild(obj);
-                        obj.active = true;
-                    }
-                });
-                if (settingsNode) {
-                    ui_root.addChild(settingsNode);
-                    settingsNode.active = true;
+                if(this.settingsNode)
+                {
+                    this.settingsNode.active = true;
                 }
             }
             break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showteahouse: {
+                
+            }
+            break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showshare: {
+                if(this.showshareNode)
+                {
+                    this.showshareNode.active = true;
+                }
+            }
+            break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showluckwheel: {
+                if(this.shopnode)
+                {
+                    this.shopnode.active = true;
+                }
+            }
+            break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showmail: {
+                if(this.shopnode)
+                {
+                    this.shopnode.active = true;
+                }
+            }
+            break;
+            case cc.vv.GLGameDefine.BTNMsgType.hall_showpayroot: {
+                if(this.payrootNode)
+                {
+                    this.payrootNode.active = true;
+                }
+            }
+            break;
+            
             default: {
                 cc.log("unkown BtnType: ", BtnType);
             }

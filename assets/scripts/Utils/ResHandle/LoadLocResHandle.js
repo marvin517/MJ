@@ -173,7 +173,7 @@ var LoadLocResHandle = cc.Class({
                             waitkey = null;
                             self.CheckUpdate();
                         }
-                    }, 5000);
+                    }, 2000);
                 }
                 else
                 {
