@@ -140,6 +140,9 @@ var GLGameDefine = cc.Class({
         //按钮消息类型
         BTNMsgType:
         {
+            login_Guestlogin:               "guestlogin",       //游客登陆
+            login_wxlogin:                  "wxlogin",          //微信登陆
+            
             hall_showshop:                  "showshop",         //显示商城消息
             hall_showinvate:                "showinvate",       //显示邀请界面
             hall_showhistory:               "showhistory",      //显示历史界面

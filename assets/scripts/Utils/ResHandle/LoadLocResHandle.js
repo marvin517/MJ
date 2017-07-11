@@ -123,6 +123,7 @@ var LoadLocResHandle = cc.Class({
                     console.log("LoadLocResHandle this.KeyList[0]:"+this.KeyList[0]);
                     var self = this;
                     console.log("LoadLocResHandle this.CurDownloadKey-url:"+this.WaitList[this.CurDownloadKey]);
+                    var waitkey = self.CurDownloadKey;
                     cc.loader.loadRes(this.WaitList[this.CurDownloadKey], function (err, obj)
                     {
                         if(err == null)
@@ -153,10 +154,26 @@ var LoadLocResHandle = cc.Class({
                             
                             //重置当前key
                             self.CurDownloadKey = null;
+                            waitkey = null;
                             self.CheckUpdate();
                             
                         }
                     });
+                    //5秒后，如果还未加载出来，证明有问题，停止加载，弹出错误
+                    setTimeout(function() {
+                        if(waitkey != null && waitkey == self.CurDownloadKey)
+                        {
+                            cc.error("self.CurDownloadKey:"+self.CurDownloadKey+" load failed!");
+                            //删除等待列表中的key
+                            delete(self.WaitList[self.CurDownloadKey]);
+                            delete(self.DoneList[self.CurDownloadKey]);
+                            
+                            //重置当前key
+                            self.CurDownloadKey = null;
+                            waitkey = null;
+                            self.CheckUpdate();
+                        }
+                    }, 5000);
                 }
                 else
                 {

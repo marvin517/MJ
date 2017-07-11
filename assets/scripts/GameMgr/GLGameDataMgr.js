@@ -72,7 +72,7 @@ var GLGameDataMgr = cc.Class({
             case cc.vv.GLGameDefine.GameRoute.Loginlogin:
             {
                 console.log("msgtype:"+msgtype+","+"cc.vv.GLGameDefine.GameRoute.Loginlogin:"+JSON.stringify(parm));
-                cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.loginloginsuc,parm);
+                cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.loginloginsuc,JSON.stringify(parm));
             }
             break;
             case cc.vv.GLGameDefine.GameRoute.HallcreateRoom:

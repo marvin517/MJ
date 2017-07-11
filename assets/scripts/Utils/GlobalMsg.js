@@ -379,7 +379,7 @@ var GlobalMsg = cc.Class({
                 if(this.m_ObserverDelList)
                 {
                     this.m_ObserverDelList.push(obj);
-                    this.m_SendMsgDone();
+                    this.CheckAllObj();
                 }
             }
         } catch (error) {
