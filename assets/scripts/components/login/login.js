@@ -59,7 +59,7 @@ cc.Class({
             case cc.vv.GLGameDefine.MessageType.loginloginsuc:
             {
                 console.log("msgtype:loginloginsuc:"+msgtype+","+"parm:"+JSON.stringify(parm));
-
+                
                 cc.vv.global.loadScene("hall");
             }
             break;

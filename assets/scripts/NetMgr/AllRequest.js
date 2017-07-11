@@ -67,7 +67,7 @@ var AllRequest = cc.Class({
             cc.vv.GlobalMsg.Send("GameMgrMSG_Req_Cb_failed",cc.vv.GLGameDefine.MessageType.initpomeloFailed);
             cc.vv.allRequest.state = cc.vv.allRequest.state < 6 ? 0 : 6;
             if (cc.vv.allRequest.state == 0)
-                cc.vv.alert.show("提示", "连接超时，请检查网络后，重启客户端以重试",function(){
+                cc.vv.peralert.show("提示", "连接超时，请检查网络后，重启客户端以重试",function(){
                     cc.vv.global.restart();
                 });
             if (cc.vv.allRequest.state == 6){

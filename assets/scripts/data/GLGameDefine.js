@@ -168,6 +168,11 @@ var GLGameDefine = cc.Class({
             CheckType_jushu:                10001,  //复选框消息
             CheckType_fengdin:              10002,  //封顶
             CheckType_wanfa:                10003,  //玩法
+            CheckType_jiadifan:             10004,  //自摸加底,自摸加番
+            CheckType_type:                 10005,  //游戏类型，血战？血流
+            CheckType_difen:                10006,  //底分选择
+            CheckType_AAkou:                10007,  //AA扣房卡
+
         }),
         //按钮消息类型
         BTNMsgType:cc.Enum(

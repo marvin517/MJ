@@ -77,7 +77,7 @@ var GLGameDataMgr = cc.Class({
             break;
             case cc.vv.GLGameDefine.GameRoute.HallcreateRoom:
             {
-                cc.vv.GlobalMsg.SendWithTarget("GameMgrLMSG",cc.vv.GLGameDefine.MessageType.createRoomSucess,parm);
+                cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.createRoomSucess,parm);
             }
             break;
             case cc.vv.GLGameDefine.GameRoute.HallgetRoomInfo:
