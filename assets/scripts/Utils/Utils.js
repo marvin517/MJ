@@ -34,8 +34,62 @@ var Utils = cc.Class({
         var slideEvents = node.getComponent(cc.Slider).slideEvents;
         slideEvents.push(eventHandler);
     },
+    
+    //遍历所有对象，然后返回错误list
+    checkData:function(data,errorList)
+    {
+        try {
+            if(errorList == null || errorList == undefined)
+            {
+                errorList=[];
+            }
+            for(var value in data)
+            {
+                if(typeof data[value] == "object")
+                {
+                    //console.log("checkData for :"+value+",data[value]:"+JSON.stringify(data[value]));
+                    if(data[value] != null && data[value] != undefined)
+                    {
+                        this.checkData(data[value],errorList);
+                    }
+                    else
+                    {
+                        
+                        if(data[value] === undefined)
+                        {
+                            cc.error("checkData normal 1:"+value+",data[value]:"+data[value]);
+                            errorList.push(value);
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    if(data[value] === undefined)
+                    {
+                        cc.error("data.value is null:"+value);
+                        errorList.push(value);
+                    }
+                    else
+                    {
+                        console.log("checkData normal 2:"+value+",data[value]:"+data[value]);
+                    }
+                }
+            }
 
-    //////九日，小工具集
+            if(errorList.length > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        } catch (error) {
+            cc.error("check failed");
+        }
+        
+    },
 
     ////判空函数
     alert:function(obj,objName)

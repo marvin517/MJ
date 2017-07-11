@@ -132,10 +132,10 @@ var GLGameDefine = cc.Class({
             // GameqiangZhuang:                603,    //抢庄结束
             // GameLiangpai:                   604,    //亮牌
 
-            hall_refreshHeadTag:            1100,
-            hall_autoJoinTeahouse:          1101,
-            game_hideInfo:                  1102,
-            game_chupaiSucess:              1103,
+            hall_refreshHeadTag:            1100,   //刷新头像标签
+            hall_autoJoinTeahouse:          1101,   //自动进入茶馆
+            game_hideInfo:                  1102,   //隐藏信息
+            game_chupaiSucess:              1103,   //出牌成功
         },
         //按钮消息类型
         BTNMsgType:
@@ -144,11 +144,21 @@ var GLGameDefine = cc.Class({
             hall_showinvate:                "showinvate",       //显示邀请界面
             hall_showhistory:               "showhistory",      //显示历史界面
             hall_showDeleget:               "showDeleget",      //显示代理界面
-            hall_showsetting:               "showsetting",
+            hall_showsetting:               "showsetting",      //显示设置界面
+            hall_showteahouse:              "showteahouse",     //显示茶馆
+            hall_showluckwheel:             "showluckwheel",    //显示大转盘
+            hall_showmail:                  "showmail",         //显示消息
+
+
+
+            //game
             game_showchat:                  "showchat",         //显示聊天界面
             game_showChatHistory:           "ChatHistory",      //
             game_changeDesk:                "btn_changeDesk",   //换桌布消息
             game_showgps:                   "showgps",          //换桌布消息
+
+
+
         },
         //游戏路由
         //前缀为场景名称

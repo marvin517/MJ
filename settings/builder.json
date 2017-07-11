@@ -7,20 +7,18 @@
     "anysdk"
   ],
   "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
   "mergeStartScene": false,
   "oauthLoginServer": "",
-  "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
     "portrait": false,
     "upsideDown": false
   },
-  "packageName": "org.cocos2d.MJ",
+  "packageName": "org.cocos2d.DZMJ",
   "privateKey": "",
   "renderMode": "0",
   "startScene": "51db9b41-5109-4ca8-a81b-90418b9b3d99",
-  "title": "MJ",
+  "title": "DZMJ",
   "webOrientation": "auto"
 }

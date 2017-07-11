@@ -9,7 +9,7 @@ var GlobalMsg = cc.Class({
 
         m_ObserverList:[],
         m_ObserverDelList:[],
-        m_SendMsgDone:false,
+        m_SendMsgDone:true,
     },
 
     init:function()
@@ -19,7 +19,7 @@ var GlobalMsg = cc.Class({
         this.m_targetList = [];
         this.m_ObserverList=[];
         this.m_ObserverDelList=[];
-        this.m_SendMsgDone=false;
+        this.m_SendMsgDone=true;
     },
 
     //多参数调用，
@@ -337,31 +337,40 @@ var GlobalMsg = cc.Class({
     },
 ////////////////////////////////////////////////////////////////////////////////////////
 //依赖于对象的唯一性
-    
+    //添加监听
     AddObserver:function(obj)
     {
         this.m_ObserverList.push(obj);
     },
+    //发送消息
     SendMsg:function(msgtype,parm)
     {
-        if(!this.m_ObserverList)
-        {
-            cc.warn("obj list is empty!");
-        }
+        try {
+            this.m_SendMsgDone = false;
+            if(!this.m_ObserverList)
+            {
+                cc.warn("obj list is empty!");
+            }
 
-        for(var i = 0;i < this.m_ObserverList.length;i++)
-        {
-            if(this.m_ObserverList[i])
+            for(var i = 0;i < this.m_ObserverList.length;i++)
             {
-                this.m_ObserverList[i].MssageHandle(msgtype,parm);
+                if(this.m_ObserverList[i])
+                {
+                    this.m_ObserverList[i].MssageHandle(msgtype,parm);
+                }
+                else
+                {
+                    cc.warn("");
+                }
             }
-            else
-            {
-                cc.warn("");
-            }
+            this.m_SendMsgDone = true;
+            this.CheckAllObj();
+        } catch (error) {
+            cc.error("function dose not exsist");
         }
-        this.CheckAllObj();
+        
     },
+    //删除消息
     RemoveObserver:function(obj)
     {
         try {
@@ -370,27 +379,30 @@ var GlobalMsg = cc.Class({
                 if(this.m_ObserverDelList)
                 {
                     this.m_ObserverDelList.push(obj);
+                    this.m_SendMsgDone();
                 }
             }
         } catch (error) {
-            
+            cc.vv.global.ShowErrorMsg("RemoveObserver Failed:"+JSON.stringify(error.message));
         }
     },
     CheckAllObj:function()
     {
-        console.log("remove obj handle");
-        for (var index = 0; index < this.m_ObserverDelList.length; index++) {
-            for(var i = 0;i < this.m_ObserverList.length;i++)
-            {
-                if(this.m_ObserverList[i] == this.m_ObserverDelList[index])
+        if(this.m_SendMsgDone == true)
+        {
+            console.log("remove obj handle");
+            for (var index = 0; index < this.m_ObserverDelList.length; index++) {
+                for(var i = 0;i < this.m_ObserverList.length;i++)
                 {
-                    this.m_ObserverList.splice(i, 1);
-                    this.m_ObserverDelList.splice(index, 1);
-                    this.CheckAllObj();
+                    if(this.m_ObserverList[i] == this.m_ObserverDelList[index])
+                    {
+                        this.m_ObserverList.splice(i, 1);
+                        this.m_ObserverDelList.splice(index, 1);
+                        this.CheckAllObj();
+                    }
                 }
             }
         }
-        
     },
     
 

@@ -17,7 +17,73 @@ cc.Class({
         }, 50);
         
     },
-    
+    //遍历所有路由数据是否存在
+    CheckRoutData:function(route,data)
+    {
+        var errorList=[];
+        this.checkData(data,errorList);
+        console.log("CheckRoutData :done:"+JSON.stringify(errorList));
+        if(errorList.length > 0)
+        {
+            //上传所有数据
+
+        }
+    },
+    //遍历所有对象，然后返回错误list
+    checkData:function(data,errorList)
+    {
+        try {
+            if(errorList == null || errorList == undefined)
+            {
+                errorList=[];
+            }
+            for(var value in data)
+            {
+                if(typeof data[value] == "object")
+                {
+                    //console.log("checkData for :"+value+",data[value]:"+JSON.stringify(data[value]));
+                    if(data[value] != null && data[value] != undefined)
+                    {
+                        this.checkData(data[value],errorList);
+                    }
+                    else
+                    {
+                        
+                        if(data[value] === undefined)
+                        {
+                            cc.error("checkData normal 1:"+value+",data[value]:"+data[value]);
+                            errorList.push(value);
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    if(data[value] === undefined)
+                    {
+                        cc.error("data.value is null:"+value);
+                        errorList.push(value);
+                    }
+                    else
+                    {
+                        console.log("checkData normal 2:"+value+",data[value]:"+data[value]);
+                    }
+                }
+            }
+
+            if(errorList.length > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        } catch (error) {
+            cc.error("check failed");
+        }
+        
+    },
     //持续发送
     SenedAllMsg:function()
     {
@@ -31,12 +97,14 @@ cc.Class({
         {
             case cc.vv.GLGameDefine.MessageType.initpomeloSucess:                      //initpomelo登陆成功
             {
+                this.CheckRoutData("",parm);
                 console.log("msgtype:initpomeloSucess:"+msgtype+","+"parm:"+JSON.stringify(parm));
                 cc.vv.NetMgr.NetRequest(cc.vv.GLGameDefine.GameRoute.LoginqueryEntry,{clientType : cc.vv.global.localClientType});
             }
             break;
             case cc.vv.GLGameDefine.MessageType.gatequeryEntrySuc:                      //connectGate登陆成功
             {
+                this.CheckRoutData("",parm);
                 console.log("msgtype:gatequeryEntrySuc:"+msgtype+","+"parm:"+JSON.stringify(parm));
                 console.log("msgtype:gatequeryEntrySuc:GateIP:"+JSON.stringify(parm.data.host));
                 console.log("msgtype:gatequeryEntrySuc:GatePort:"+JSON.stringify(parm.data.port));
@@ -47,17 +115,17 @@ cc.Class({
             }
             break;
             case cc.vv.GLGameDefine.MessageType.connectorSucess:                      //connectconnector登陆成功
-            {
+            {this.CheckRoutData("",parm);
                 console.log("msgtype:connectorSucess:"+msgtype+","+"parm:"+JSON.stringify(parm));
                 this.guestAuth();
             }
             break;
             case cc.vv.GLGameDefine.MessageType.loginloginsuc:
-            {
+            {this.CheckRoutData("",parm);
                 console.log("msgtype:loginloginsuc:"+msgtype+","+"parm:"+JSON.stringify(parm));
-                //cc.vv.peralert.show("提示", "msgtype",function () {
-                            //cc.vv.GlobalMsg.RemoveObserver(this);
-                        //},true);
+                cc.vv.peralert.show("提示", "msgtype",function () {
+                            cc.vv.GlobalMsg.RemoveObserver(this);
+                        },true);
                 
             }
             break;

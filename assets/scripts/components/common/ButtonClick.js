@@ -46,16 +46,19 @@ cc.Class({
     {
         console.log("event.target.name:"+JSON.stringify(event.target.name));
         cc.vv.GlobalMsg.SendWithTarget("GameMgrLMSG",cc.vv.GLGameDefine.MessageType.ButtonClick,event.target.name);
+        cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.ButtonClick,event.target.name);
     },
     OnButtonClickCusData:function(event,customEventData)
     {
         console.log("event.target.kind:"+JSON.stringify(customEventData));
         console.log("event.target.ButtonClick:"+cc.vv.GLGameDefine.MessageType.ButtonClick);
         cc.vv.GlobalMsg.SendWithTarget("GameMgrLMSG",cc.vv.GLGameDefine.MessageType.ButtonClick,customEventData);
+        cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.ButtonClick,customEventData);
     },
     OnButtonClickCusDataGL:function(event,customEventData)
     {
         console.log("event.target.kind:"+JSON.stringify(customEventData));
         cc.vv.GlobalMsg.Send("GameMgrMSG",cc.vv.GLGameDefine.MessageType.ButtonClick,customEventData);
+        cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.ButtonClick,customEventData);
     }
 });
