@@ -15,6 +15,7 @@ cc.Class({
         payrootNode:cc.Node,
         DelegetNode:cc.Node,
         showshareNode:cc.Node,
+        createroomNode:cc.Node,
     },
 
     // use this for initialization
@@ -50,6 +51,15 @@ cc.Class({
     {
         switch(BtnType)
         {
+            
+            case cc.vv.GLGameDefine.BTNMsgType.hall_createroom:
+            {
+                if(this.createroomNode)
+                {
+                    this.createroomNode.active = true;
+                }
+            }
+            break;
             case cc.vv.GLGameDefine.BTNMsgType.hall_showshop:
             {
                 if(this.shopnode)
@@ -140,6 +150,7 @@ cc.Class({
             default: {
                 cc.log("unkown BtnType: ", BtnType);
             }
+            break;
         }
     },
     AddChildOn:function(key)

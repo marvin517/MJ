@@ -1,8 +1,12 @@
+var GLGameDefine = require("GLGameDefine");
 cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        DDDSA: {
+            default: [],
+            type: [GLGameDefine.MessageType]
+        },
     },
 
     // use this for initialization

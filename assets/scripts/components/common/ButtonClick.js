@@ -60,5 +60,6 @@ cc.Class({
         console.log("event.target.kind:"+JSON.stringify(customEventData));
         cc.vv.GlobalMsg.Send("GameMgrMSG",cc.vv.GLGameDefine.MessageType.ButtonClick,customEventData);
         cc.vv.GlobalMsg.SendMsg(cc.vv.GLGameDefine.MessageType.ButtonClick,customEventData);
-    }
+    },
+
 });

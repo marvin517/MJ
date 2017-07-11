@@ -5,14 +5,40 @@
 //MessageType offset
 var offset_th = 1000;                          //teahouse
 
+var BTNMsgTypes=cc.Enum(
+        {
+            login_Guestlogin:               "guestlogin",       //游客登陆
+            login_wxlogin:                  "wxlogin",          //微信登陆
+
+            hall_createroom:                "showcreateroom",  //显示创建房间
+            hall_showshop:                  "showshop",         //显示商城消息
+            hall_showinvate:                "showinvate",       //显示邀请界面
+            hall_showhistory:               "showhistory",      //显示历史界面
+            hall_showDeleget:               "showDeleget",      //显示代理界面
+            hall_showsetting:               "showsetting",      //显示设置界面
+            hall_showteahouse:              "showteahouse",     //显示茶馆
+            hall_showluckwheel:             "showluckwheel",    //显示大转盘
+            hall_showmail:                  "showmail",         //显示消息
+            hall_showJoin:                  "showJoin",         //显示加入房间
+            hall_showhelp:                  "showhelp",         //显示帮助
+            hall_showpayroot:               "showpayroot",      //显示支付根节点
+            hall_showshare:                 "showshare",        //分享节点
+            //game
+            game_showchat:                  "showchat",         //显示聊天界面
+            game_showChatHistory:           "ChatHistory",      //
+            game_changeDesk:                "btn_changeDesk",   //换桌布消息
+            game_showgps:                   "showgps",          //换桌布消息
+
+        });
 var GLGameDefine = cc.Class({
     extends: cc.Component,
+    
     statics: {
         //本地数据，拥有一个user对象
         //商品数据类
 
         //本地消息
-        MessageType:{
+        MessageType:cc.Enum({
 
             //public
             NetError:500,
@@ -40,6 +66,7 @@ var GLGameDefine = cc.Class({
             ButtonClick:                    404,
             createRoomSucess:               405,
             getRommInfo:                    406,
+            RadioButtonClick:               407,    //复选框事件
 
             userEnter:                      450,    //用户进入
             userLeave:                      451,    //用户退出
@@ -136,13 +163,19 @@ var GLGameDefine = cc.Class({
             hall_autoJoinTeahouse:          1101,   //自动进入茶馆
             game_hideInfo:                  1102,   //隐藏信息
             game_chupaiSucess:              1103,   //出牌成功
-        },
+
+
+            CheckType_jushu:                10001,  //复选框消息
+            CheckType_fengdin:              10002,  //封顶
+            CheckType_wanfa:                10003,  //玩法
+        }),
         //按钮消息类型
-        BTNMsgType:
+        BTNMsgType:cc.Enum(
         {
             login_Guestlogin:               "guestlogin",       //游客登陆
             login_wxlogin:                  "wxlogin",          //微信登陆
 
+            hall_createroom:                "showcreateroom",  //显示创建房间
             hall_showshop:                  "showshop",         //显示商城消息
             hall_showinvate:                "showinvate",       //显示邀请界面
             hall_showhistory:               "showhistory",      //显示历史界面
@@ -161,7 +194,31 @@ var GLGameDefine = cc.Class({
             game_changeDesk:                "btn_changeDesk",   //换桌布消息
             game_showgps:                   "showgps",          //换桌布消息
 
-        },
+        }),
+        // {
+        //     login_Guestlogin:               "guestlogin",       //游客登陆
+        //     login_wxlogin:                  "wxlogin",          //微信登陆
+
+        //     hall_createroom:                "showcreateroom",  //显示创建房间
+        //     hall_showshop:                  "showshop",         //显示商城消息
+        //     hall_showinvate:                "showinvate",       //显示邀请界面
+        //     hall_showhistory:               "showhistory",      //显示历史界面
+        //     hall_showDeleget:               "showDeleget",      //显示代理界面
+        //     hall_showsetting:               "showsetting",      //显示设置界面
+        //     hall_showteahouse:              "showteahouse",     //显示茶馆
+        //     hall_showluckwheel:             "showluckwheel",    //显示大转盘
+        //     hall_showmail:                  "showmail",         //显示消息
+        //     hall_showJoin:                  "showJoin",         //显示加入房间
+        //     hall_showhelp:                  "showhelp",         //显示帮助
+        //     hall_showpayroot:               "showpayroot",      //显示支付根节点
+        //     hall_showshare:                 "showshare",        //分享节点
+        //     //game
+        //     game_showchat:                  "showchat",         //显示聊天界面
+        //     game_showChatHistory:           "ChatHistory",      //
+        //     game_changeDesk:                "btn_changeDesk",   //换桌布消息
+        //     game_showgps:                   "showgps",          //换桌布消息
+
+        // },
         //游戏路由
         //前缀为场景名称
         //cc.vv.NetMgr.NetRequest(cc.vv.GLGameDefine.GameRoute.HallgetRoomInfo,data);
