@@ -82,6 +82,12 @@ var GLGameDefine = cc.Class({
             dissolve_cancel_push:           505,    //通知玩家房间解散被取消
             dissolve_success_push:          506,    //通知玩家房间解散成功
 
+            game_showdingque:               507,    //显示定缺
+            game_choosedingque:             508,    //选择定缺
+            game_showHSZ:                   509,    //显示换三张
+            game_HSZsucess:                 510,    //换三张成功
+
+
             singleHeadSpr_downloadOK:       600,    //通知玩家有个头像下载好了
 
             //teahouse
@@ -198,6 +204,7 @@ var GLGameDefine = cc.Class({
             game_showChatHistory:           "ChatHistory",      //
             game_changeDesk:                "btn_changeDesk",   //换桌布消息
             game_showgps:                   "showgps",          //换桌布消息
+            
 
         }),
         // {
