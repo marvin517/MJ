@@ -43,6 +43,7 @@ var playerdata = cc.Class({
     },
     setplayerdata:function(ret)
     {
+
         try {
             var self = this;
             console.log("setplayerdata:"+JSON.stringify(data));
