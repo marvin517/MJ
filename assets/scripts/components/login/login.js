@@ -103,14 +103,14 @@ cc.Class({
         }
         else if(ret.code == 300){//登陆时发现自己在线，顶号，需转连之前的connection
             //先移除重连监听
-            cc.vv.PomeloNetMgr.ListingOff("close",cc.vv.allRequest.ListenOnClose);
-            //断开当前连接，连接至新的connection
-            var pomelo = window.pomelo;
-            pomelo.disconnect();
-            cc.vv.userMgr.shutOffToConnection(ret);
+            // cc.vv.PomeloNetMgr.ListingOff("close",cc.vv.allRequest.ListenOnClose);
+            // //断开当前连接，连接至新的connection
+            // var pomelo = window.pomelo;
+            // pomelo.disconnect();
+            // cc.vv.userMgr.shutOffToConnection(ret);
         }else 
         {
-            cc.vv.playerdata.setplayerdata(ret.data);
+            cc.vv.playerdata.setplayerdata(ret);
             //非重连
             if (ret.data.addr == "hall") 
             {
@@ -147,7 +147,7 @@ cc.Class({
 
     //登陆
     login:function(data){
-
+        
         data.upgradeVersion = cc.sys.localStorage.getItem("localVersion");
         cc.vv.NetMgr.NetRequest(cc.vv.GLGameDefine.GameRoute.Loginlogin, data);
     },

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "e1d94f56-0d3a-4733-9ffa-07438961ea7e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Best_Gunner": {
+      "ver": "1.0.3",
+      "uuid": "5048f49c-3b81-458a-98aa-c32986f3176e",
+      "rawTextureUuid": "e1d94f56-0d3a-4733-9ffa-07438961ea7e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 68,
+      "height": 82,
+      "rawWidth": 69,
+      "rawHeight": 82,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
