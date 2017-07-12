@@ -87,6 +87,48 @@ cc.Class({
             }
         }
     },
+    //登陆成功,获取登陆后的数据
+    loginsucess:function(ret)
+    {
+        if(ret.code == cc.vv.global.MessageType.NetReLogin)
+        {
+            //发送NetReLogin消息
+            // cc.vv.allRequest.state = 13;
+            // var pomelo = window.pomelo;
+            // pomelo.disconnect();
+            // cc.vv.alert.show("提示",ret.errorMessage,function()
+            // {
+            //     cc.vv.allRequest.activeToReconnection();
+            // });
+        }
+        else if(ret.code == 300){//登陆时发现自己在线，顶号，需转连之前的connection
+            //先移除重连监听
+            cc.vv.PomeloNetMgr.ListingOff("close",cc.vv.allRequest.ListenOnClose);
+            //断开当前连接，连接至新的connection
+            var pomelo = window.pomelo;
+            pomelo.disconnect();
+            cc.vv.userMgr.shutOffToConnection(ret);
+        }else 
+        {
+            cc.vv.playerdata.setplayerdata(ret.data);
+            //非重连
+            if (ret.data.addr == "hall") 
+            {
+                console.log("ret.data.addr == \"hall\"");
+                //预加载场景，然后进入
+                cc.vv.wc.show("");
+                cc.vv.global.loadScene("hall");
+            }
+            else 
+            {
+                var data1 = {
+                    roomId: ret.data.userInfo.roomId,
+                    seatIndex: ret.data.userInfo.seatIndex,
+                };
+                self.reconnection(data1);
+            }
+        }
+    },
     //游客：检测本地是否有存储 account，如果没有 用当前时间生成，向服务器提交查询这个账号，没有则创建
     guestAuth:function(){
         var self = this;

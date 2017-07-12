@@ -29,6 +29,8 @@ AllModules.propertyMgr = require("propertyMgr");
 AllModules.GLGameDefine = require("GLGameDefine");
 //用户
 //AllModules.userMgr = require("UserMgr");
+AllModules.playerdata = require("playerdata");
+
 //回放管理
 //AllModules.replayMgr = require("ReplayMgr");
 //跨平台相关代码
