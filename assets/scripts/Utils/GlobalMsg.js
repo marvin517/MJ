@@ -337,10 +337,24 @@ var GlobalMsg = cc.Class({
     },
 ////////////////////////////////////////////////////////////////////////////////////////
 //依赖于对象的唯一性
-    //添加监听
+//添加监听
     AddObserver:function(obj)
     {
-        this.m_ObserverList.push(obj);
+        this.m_ObserverList.forEach((item, index) => 
+        {
+            if (item === obj) {
+                return true;
+            }
+        })
+
+        if (obj) {
+            this.m_ObserverList.push(obj);
+        } else {
+            cc.warn("ERR: invalid addObserver target:%s", target);
+            return false;
+        }
+        return true;
+        
     },
     //发送消息
     SendMsg:function(msgtype,parm)
