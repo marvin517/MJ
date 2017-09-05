@@ -345,12 +345,12 @@ var GlobalMsg = cc.Class({
             if (item === obj) {
                 return true;
             }
-        })
+        });
 
         if (obj) {
             this.m_ObserverList.push(obj);
         } else {
-            cc.warn("ERR: invalid addObserver target:%s", target);
+            cc.warn("ERR: invalid addObserver obj:"+obj);
             return false;
         }
         return true;
@@ -388,35 +388,57 @@ var GlobalMsg = cc.Class({
     RemoveObserver:function(obj)
     {
         try {
+            this.m_ObserverDelList.forEach((item, index) => 
+            {
+                if (item === obj) {
+                    return false;
+                }
+            });
+            
             if(obj)
             {
                 if(this.m_ObserverDelList)
                 {
                     this.m_ObserverDelList.push(obj);
                     this.CheckAllObj();
+                    return true;
                 }
             }
         } catch (error) {
             cc.vv.global.ShowErrorMsg("RemoveObserver Failed:"+JSON.stringify(error.message));
         }
+        return false;
     },
     CheckAllObj:function()
     {
-        if(this.m_SendMsgDone == true)
-        {
-            console.log("remove obj handle");
-            for (var index = 0; index < this.m_ObserverDelList.length; index++) {
-                for(var i = 0;i < this.m_ObserverList.length;i++)
-                {
-                    if(this.m_ObserverList[i] == this.m_ObserverDelList[index])
+        try {
+            if(this.m_SendMsgDone == true)
+            {
+                console.log("remove obj handle");
+                for (var index = 0; index < this.m_ObserverDelList.length; index++) {
+                    for(var i = 0;i < this.m_ObserverList.length;i++)
                     {
-                        this.m_ObserverList.splice(i, 1);
-                        this.m_ObserverDelList.splice(index, 1);
-                        this.CheckAllObj();
+                        if(this.m_ObserverList[i] == this.m_ObserverDelList[index])
+                        {
+                            console.log("remove obj handle  s ");
+                            this.m_ObserverList.splice(i, 1);
+                            this.m_ObserverDelList.splice(index, 1);
+                            this.CheckAllObj();
+                            return;
+                        }
                     }
+                    //如果没找到一致的，需要删除列表中的对象
+                    this.m_ObserverDelList.splice(index, 1);
+                    this.CheckAllObj();
+                    return;
                 }
+                return;
             }
+            return;
+        } catch (error) {
+            
         }
+        
     },
     
 
